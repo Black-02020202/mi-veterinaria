@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veterinaria Online</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 20px;
+        }
+
+        .product {
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+            padding: 10px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .product img {
+            max-width: 50%;
+            height: 50;
+            transition: transform 0.3s ease;
+        }
+
+        .product:hover img {
+            transform: scale(1.1);
+        }
+
+        .product h3 {
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+
+        .product p {
+            margin-bottom: 10px;
+        }
+
+        .product button {
+            background-color: #ff9900;
+            color: #ffffff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .product button:hover {
+            background-color: #ff6600;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #carrito-productos {
+            display: none;
+            padding: 20px;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+        }
+
+        #carrito-productos.visible {
+            display: block;
+        }
+
+        #carrito-productos .eliminar {
+            color: red;
+            cursor: pointer;
+        }
+        nav {
+            background-color: #f0f0f0;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333333;
+            margin: 0 10px;
+        }
+        nav a:hover {
+            color: #ff9900;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Veterinaria Huellitas Online</h1>
+    </header>
+    <nav>
+        <a href="VETERINARIA.HTML">INICIO</a>
+        <a href="citas.html">CITAS</a>
+        <a href="ERROR.HTML">EXPEDIENTE</a>
+        <a href="LOGIN.HTML">LOGIN</a>
+    </nav>
+
+    <div class="container">
+        
+
+        <div class="product">
+            <img src="imag/foto4.webp" alt="Alimento Para Perro Dog Chow Adulrzg25Gr">
+            <h3>Alimento Para Perro Dog Chow Adulrzg25Gr</h3>
+
+            <p>Alimento Para Perro Dog Chow Adulrzg25Gr
+</p>
+            <p>Precio: $65.00</p>
+            <button onclick="agregarAlCarrito(1)">Agregar al Carrito</button>
+        </div>
+
+    </div>
+
+        <div class="product">
+            <img src="imag/foto19.jpg" alt="Alimento Perro Cachorro Purina Dog Chow Medianos y Grandes -2kg">
+            <h3>Alimento Perro Cachorro Purina Dog Chow Medianos y Grandes -2kg</h3>
+
+            <p>Nutrición específicamente diseñada para el óptimo desarrollo de tu cachorro mediano o grande que ayuda a mejorar su calidad de vida desde adentro hacia afuera de forma visible.
+</p>
+            <p>Precio: $9.95</p>
+            <button onclick="agregarAlCarrito(1)">Agregar al Carrito</button>
+        </div>
+
+        <div class="product">
+            <img src="imag/imag/foto5.webp" alt="Alimento Dogui Perro Adulto Sabor Pollo, Carne Y Vegetales, 4kg">
+            <h3>Alimento Dogui Perro Adulto Sabor Pollo, Carne Y Vegetales, 4kg</h3>
+
+            <p>Dogui®, ¡Amor en todos los sentidos! En la edad adulta los perros viven a plenitud todo su potencial, son miembros amados de nuestras familias que necesitan de amor, cuidado y una óptima nutrición.
+</p>
+            <p>Precio: $11.93</p>
+            <button onclick="agregarAlCarrito(1)">Agregar al Carrito</button>
+        </div>
+
+        <div class="product">
+            <img src="imag/imag/foto19.webp" alt="Alimento Perro Cachorro Purina Dog Chow Medianos y Grandes -2kg">
+            <h3>Alimento Perro Cachorro Purina Dog Chow Medianos y Grandes -2kg</h3>
+
+            <p>Nutrición específicamente diseñada para el óptimo desarrollo de tu cachorro mediano o grande que ayuda a mejorar su calidad de vida desde adentro hacia afuera de forma visible.
+</p>
+            <p>Precio: $9.95</p>
+            <button onclick="agregarAlCarrito(1)">Agregar al Carrito</button>
+        </div>
+
+<div class="product">
+            <img src="imag/foto6.webp" alt="Alimento Perro Adulto Purina Dog Chow Medianos y Grandes Bonus Bag -15kg + 2.3kg (38lb)">
+            <h3>Alimento Perro Adulto Purina Dog Chow Medianos y Grandes Bonus Bag -15kg + 2.3kg (38lb)</h3>
+
+            <p>Nutrición específicamente diseñada para tu perro adulto mediano o grande que ayuda a mejorar su calidad de vida desde adentro hacia afuera de forma visible.
+
+            <p>Precio: $44.95</p>
+            <button onclick="agregarAlCarrito(1)">Agregar al Carrito</button>
+        </div>
+
+
+<div class="product">
+            <img src="imag/foto7.webp" alt="PURINA® DOG CHOW® Cachorros Medianos y Grandes">
+            <h3>PURINA® DOG CHOW® Cachorros Medianos y Grandes</h3>
+
+            <p>Alimento 100% completo y balanceado para perros Cachorros de tamaño Medianos y Grandes
+</p>
+            <p>Precio: $16.95</p>
+            <button onclick="agregarAlCarrito(1)">Agregar al Carrito</button>
+        </div>
+
+
+       <div class="product">
+            <img src="imag/foto8.webp" alt="Alimento Perro Adulto Purina Dog Chow Minis y Pequeños -4kg">
+            <h3>Alimento Perro Adulto Purina Dog Chow Minis y Pequeños -4kg</h3>
+
+            <p>Nutrición especializada que maximiza la calidad de vida de tu perro adulto, ayudando a contrarrestar los efectos de un metabolismo lento para mantener un peso saludable.
+</p>
+            <p>Precio: $19.25</p>
+            <button onclick="agregarAlCarrito(1)">Agregar al Carrito</button>
+        </div>
+
+<div class="product">
+            <img src="imag/foto9.webp" alt="Alimento Perro Purina Alpo Adulto todos los tamaños -2kg">
+            <h3>Alimento Perro Purina Alpo Adulto todos los tamaños -2kg</h3>
+
+            <p>Tu mejor amigo es capaz de sacarte una sonrisa, llenarte de energía o de calComida Gati Gatitos Para Gato Cachorro, Más 2 Meses - 1kg
+</p>
+            <p>Precio: $7.15</p>
+            <button onclick="agregarAlCarrito(1)">Agregar al Carrito</button>
+        </div>
+
+        <div class="product">
+            <img src="imag/foto10.webp" alt="Comida Gati Gatitos Para Gato Cachorro, Más 2 Meses - 1kg">
+            <h3>Comida Gati Gatitos Para Gato Cachorro, Más 2 Meses - 1kg</h3>
+
+            <p>¡Alimenta su personalidad desde pequeño con Gati! Gati® Gatitos es un alimento extruído, 100% completo y balanceado para gatos cachorros que cumple con los estándares nutricionales establecidos por la Asociación Americana de Oficiales de Control Alimentario (AAFCO).
+</p>
+            <p>Precio: $5.60</p>
+            <button onclick="agregarAlCarrito(1)">Agregar al Carrito</button>
+        </div>
+
+
+        <div class="product">
+            <img src="imag/foto11.webp" alt="Perro de peluche Spark Create Imagine -85cm">
+            <h3>Perro de peluche Spark Create Imagine -85cm</h3>
+
+            <p>Perro de peluche Spark Create Imagine -85cm: Este perro de peluche Spark Create Imagine es grande y cariñoso. </p>
+
+            <p>Precio: $7.50</p>
+            <button onclick="agregarAlCarrito(1)">Agregar al Carrito</button>
+        </div>
+
+
+        <div class="product">
+            <img src="imag/foto12.webp" alt="Alimento P Gato Gati Mar Y Tierra 8000gr">
+            <h3>Alimento P Gato Gati Mar Y Tierra 8000gr</h3>
+
+            <p>Alimento P Gato Gati Mar Y Tierra 8000gr</p>
+
+            <p>Precio: $23.63</p>
+            <button onclick="agregarAlCarrito(1)">Agregar al Carrito</button>
+        </div>
+
+
+
+        <div class="product">
+            <img src="imag/foto13.webp" alt="Alimento Húmedo Perro Adultos Purina Dog Chow Todos Los Tamaños Carne -100g">
+            <h3>Alimento Húmedo Perro Adultos Purina Dog Chow Todos Los Tamaños Carne -100g</h3>
+
+            <p>Alimento balanceado completo húmedo para perros adultos de tamaños mini o pequeños.</p>
+
+            <p>Precio: $1.04</p>
+            <button onclick="agregarAlCarrito(1)">Agregar al Carrito</button>
+        </div>
+
+
+        <div class="product">
+            <img src="imag/foto14.webp" alt="Alimento Seco Gato Adulto Purina Cat Chow Carne -1.5kg">
+            <h3>Alimento Seco Gato Adulto Purina Cat Chow Carne -1.5kg</h3>
+
+            <p> Una buena nutrición es fundamental para proteger la salud de los gatos.
+</p>
+            <p>Precio: $9.20</p>
+            <button onclick="agregarAlCarrito(1)">Agregar al Carrito</button>
+        </div>
+
+
+        <div class="product">
+            <img src="imag/foto15.jpg" alt="Catit Senses, Spray con Catnip para Gatos, 90 ml">
+            <h3>Catit Senses, Spray con Catnip para Gatos, 90 ml</h3>
+
+            <p>Concentrado de catnip (hierba gatera) pura que proporcionará a tu gato diversión </p>
+
+            <p>Precio: $13.94</p>
+            <button onclick="agregarAlCarrito(1)">Agregar al Carrito</button>
+        </div>
+
+
+        <div class="product">
+            <img src="imag/foto16.jpg" alt="Havenfly 3 Bolas de Catnip">
+            <h3>Havenfly 3 Bolas de Catnip</h3>
+
+            <p>Juguetes Interactivos para Gatos, Golosinas de Hierba Gatera Giratorias de 360° con Tapa para Almacenar, Eficaz para Limpiar los Dientes y Mejorar la EmocióN del Gato
+
+</p>
+            <p>Precio: $12,00</p>
+            <button onclick="agregarAlCarrito(1)">Agregar al Carrito</button>
+        </div>
+
+
+        <div class="product">
+            <img src="imag/foto17.jpg" alt="Comedero para perro (acero inoxidable, 2 comederos)">
+            <h3>Juego de 2 comederos de resistente acero inoxidable para cachorros, perros o gatos.</h3>
+
+            <p>Juego de 2 cuencos, capacidad de 29 onzas (3.5 tazas), cada uno proporciona un amplio espacio para cachorros, perros de raza pequeña y mediana y gatos adultos. 
+</p>
+            <p>Precio: $22.30</p>
+            <button onclick="agregarAlCarrito(1)">Agregar al Carrito</button>
+        </div>
+
+
+        <div class="product">
+            <img src="imag/foto18.jpg" alt="Pedigree Dentastix Snack">
+            <h3>Pedigree Dentastix Snack Dental para la Higiene Oral de Perros Medianos (1 Pack de 56ud)</h3>
+
+            <p>Pedigree Dentastix Snack Dental para la Higiene Oral de Perros Medianos (1 Pack de 56ud)Snack dental para perros medianos que favorece la higiene oral y contribuye a mejorar el aliento del perro
+</p>
+            <p>Precio: $40.55</p>
+            <button onclick="agregarAlCarrito(1)">Agregar al Carrito</button>
+        </div>
+
+
+        
+
+        <!-- Repite este bloque para agregar más productos -->
+    </div>
+
+    <footer>
+        <p>Carrito de Compras: <span id="carrito">0</span> productos</p>
+        <div id="carrito-productos">
+            <h2>Productos en el carrito:</h2>
+            <ul id="lista-carrito"></ul>
+            <button onclick="vaciarCarrito()">Vaciar Carrito</button>
+        </div>
+    </footer>
+
+    <script>
+        let carrito = 0;
+        let productosEnCarrito = [];
+
+        function agregarAlCarrito(cantidad) {
+            carrito += cantidad;
+            document.getElementById("carrito").textContent = carrito;
+            productosEnCarrito.push("Producto " + carrito);
+            mostrarProductosEnCarrito();
+        }
+function mostrarProductosEnCarrito() {
+    const listaCarrito = document.getElementById("lista-carrito");
+    listaCarrito.innerHTML = "";
+    productosEnCarrito.forEach((producto, index) => {
+        const item = document.createElement("li");
+        item.textContent = producto;
+        const eliminar = document.createElement("span");
+        eliminar.textContent = "Eliminar";
+        eliminar.className = "eliminar";
+        eliminar.onclick = function() {
+            eliminarDelCarrito(index);
+        };
+
+        function eliminarDelCarrito(index) {
+            productosEnCarrito.splice(index, 1);
+            carrito--;
+            document.getElementById("carrito").textContent = carrito;
+            mostrarProductosEnCarrito();
+        }
+
+        item.appendChild(eliminar);
+                listaCarrito.appendChild(item);
+        const comprar = document.createElement("button"); // Nuevo botón de comprar
+        comprar.textContent = "Comprar";
+        comprar.onclick = function() {
+            comprarProducto(index);
+        };
+        const enlace = document.createElement("a"); // Nuevo enlace para el botón de comprar
+        enlace.href = "tarjeta.html"; // Coloca aquí la URL de la página de compra
+        enlace.appendChild(comprar); // Agregar el botón de comprar al enlace
+        item.appendChild(eliminar);
+        item.appendChild(enlace); // Agregar el enlace al elemento de la lista
+        listaCarrito.appendChild(item);
+    });
+    if (productosEnCarrito.length > 0) {
+        document.getElementById("carrito-productos").classList.add("visible");
+    } else {
+        document.getElementById("carrito-productos").classList.remove("visible");
+    }
+
+    function comprarProducto(index) {
+    // Aquí puedes agregar lógica adicional si necesitas hacer algo cuando se compra un producto
+    // Por ejemplo, enviar la información del producto a un servidor, etc.
+    carrito--;
+    document.getElementById("carrito").textContent = carrito;
+    mostrarProductosEnCarrito(); // Actualizar la visualización del carrito
+}
+}
+
+
+    </script>
+</body>
+</html>

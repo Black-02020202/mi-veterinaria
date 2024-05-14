@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Veterinaria</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="registro.css">
+</head>
+<body>
+    <h2>Registro en la veterinaria</h2>
+    <form action="VETERINARIA.HTML" method="post">
+        <h3>Información de Propietario</h3>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required><br>
+
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" name="apellido" required><br>
+
+        <label for="telefono">Teléfono:</label>
+        <input type="tel" id="telefono" name="telefono" required><br>
+
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" name="direccion" required><br>
+
+        <label for="codigo_postal">Código Postal:</label>
+        <input type="text" id="codigo_postal" name="codigo_postal" required><br>
+
+        <label for="ciudad">Ciudad:</label>
+        <input type="text" id="ciudad" name="ciudad" required><br>
+
+        <label for="estado">Estado/Provincia:</label>
+        <input type="text" id="estado" name="estado" required><br>
+
+        <h3>Información de Mascota</h3>
+        <label for="nombre_mascota">Nombre de la mascota:</label>
+        <input type="text" id="nombre_mascota" name="nombre_mascota" required><br>
+
+        <label for="edad">Edad de la mascota:</label>
+        <input type="text" id="edad" name="edad" required><br>
+
+        <label for="genero">Género de la mascota:</label>
+        <select id="genero" name="genero" required>
+            <option value="masculino">Masculino</option>
+            <option value="femenino">Femenino</option>
+        </select><br>
+
+        <label for="especie">Especie de la mascota:</label>
+        <select id="especie" name="especie" required>
+            <option value="perro">Perro</option>
+            <option value="gato">Gato</option>
+        </select><br>
+
+        <label for="colores_primarios">Colores primarios de la mascota:</label>
+        <input type="text" id="colores_primarios" name="colores_primarios" required><br>
+
+        <button><a href="MOI$E$/VETERINARIA.HTML"></a>Enviar</button>
+        
+
+
+        
+    </form>
+
+    <script src="script.js">
+        
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('registroForm');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        if (validarFormulario()) {
+            enviarDatos();
+        }
+    });
+
+    function validarFormulario() {
+        const inputs = form.querySelectorAll('input, select');
+        let formularioValido = true;
+
+        inputs.forEach(function(input) {
+            if (!input.checkValidity()) {
+                formularioValido = false;
+                mostrarError(input);
+            } else {
+                ocultarError(input);
+            }
+        });
+
+        return formularioValido;
+    }
+
+    function mostrarError(input) {
+        const mensajeError = input.validationMessage;
+        // Puedes personalizar el mensaje de error aquí si lo deseas
+        alert(mensajeError);
+    }
+
+    function ocultarError(input) {
+        // Puedes realizar acciones adicionales aquí si es necesario
+    }
+
+    function enviarDatos() {
+        const formData = new FormData(form);
+        // Aquí puedes enviar los datos del formulario al servidor utilizando AJAX, Fetch, etc.
+        // Por ejemplo:
+        // fetch('url_del_servidor', {
+        //     method: 'POST',
+        //     body: formData
+        // })
+        // .then(response => response.json())
+        // .then(data => {
+        //     console.log(data); // Puedes manejar la respuesta del servidor aquí
+        // })
+        // .catch(error => {
+        //     console.error('Error al enviar los datos:', error);
+        // });
+
+        // Redireccionar a otra página web después de enviar los datos
+        window.location.href = 'file:///C:/Users/PC/Desktop/MOI$E$/VETERINARIA.HTML'; // Cambia 'pagina_de_confirmacion.html' por la URL de la página a la que quieres redirigir al usuario
+    }
+});
+
+    </script>
+
+    <style type="text/css">
+        
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+h2 {
+    color: #333;
+}
+
+form {
+    background-color: #fff;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+    </style>
+</body>
+</html>

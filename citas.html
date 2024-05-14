@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cita en la Veterinaria</title>
+    <style type="text/css">
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #FFFFFF; /* Blanco */
+    color: #333333; /* Gris oscuro */
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    color: #191970; /* Azul medianoche */
+    text-align: center;
+}
+
+form {
+    background-color: #f9f9f9; /* Gris claro */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #800020; /* Borgoña oscuro */
+}
+
+input[type="text"],
+input[type="date"],
+input[type="time"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #FFD700; /* Dorado */
+    color: #000000; /* Negro */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #DAA520; /* Dorado oscuro */
+}
+
+.error-message {
+    color: #800020; /* Borgoña oscuro */
+    font-style: italic;
+    margin-bottom: 10px;
+}
+    </style>
+</head>
+<body>
+    <h1>Cita en la Veterinaria</h1>
+    <form id="citaForm">
+        <label for="nombre">Nombre de la mascota:</label>
+        <input type="text" id="nombre" name="nombre" required><br>
+        
+        <label for="especie">Especie:</label>
+        <select id="especie" name="especie" required>
+            <option value="perro">Perro</option>
+            <option value="gato">Gato</option>
+        </select><br>
+        
+        <label for="edad">Edad:</label>
+        <select id="edad" name="edad" required>
+            <option value="joven">Joven</option>
+            <option value="adulto">Adulto</option>
+            <option value="mayor">Mayor</option>
+        </select><br>
+        
+        <label for="fecha">Fecha de la cita:</label>
+        <input type="date" id="fecha" name="fecha" required min="2024-01-01" max="2024-12-31"><br>
+        
+        <label for="hora">Hora de la cita:</label>
+        <input type="time" id="hora" name="hora" required><br>
+        
+        <label for="doctor">Doctor:</label>
+        <select id="doctor" name="doctor" required>
+            <option value="Dr. Pérez">Dr. Pérez</option>
+            <option value="Dra. López">Dra. López</option>
+            <option value="Dr. García">Dr. García</option>
+        </select><br>
+        
+        <label for="servicio">Tipo de Servicio:</label>
+        <select id="servicio" name="servicio" required>
+            <option value="consulta">Consulta Veterinaria</option>
+            <option value="estetica">Estética Veterinaria</option>
+            <option value="vacunas">Vacunas</option>
+        </select><br>
+        
+        <label for="problema">Descripción del problema:</label>
+        <textarea id="problema" name="problema" rows="4" cols="30" required></textarea><br>
+        
+        <button type="submit">Reservar Cita</button>
+    </form>
+    <div id="mensaje"></div>
+
+    <script src="script.js">
+        // Datos simulados de citas
+var citas = {
+    "2024-05-10": {
+        "Dr. Pérez": [10],
+        "Dra. López": [10],
+        "Dr. García": [10]
+    },
+    "2024-05-11": {
+        "Dr. Pérez": [10],
+        "Dra. López": [10],
+        "Dr. García": [10]
+    },
+    // Agrega más fechas si es necesario...
+};
+
+// Función para verificar si un médico puede atender a un paciente en un día específico
+function puedeAtender(doctor, fecha) {
+    // Verificar si el médico ya tiene 10 pacientes programados para ese día
+    if (citas[fecha] && citas[fecha][doctor] && citas[fecha][doctor].length >= 10) {
+        return false;
+    }
+    // Verificar si el médico ha tenido dos días de descanso consecutivos
+    var diasDescanso = 0;
+    for (var dia in citas) {
+        if (citas[dia][doctor] && citas[dia][doctor].length > 0) {
+            diasDescanso = 0; // Reiniciar contador si hay citas programadas
+        } else {
+            diasDescanso++;
+            if (diasDescanso >= 2) {
+                break; // El médico ha tenido dos días de descanso consecutivos
+            }
+        }
+    }
+    if (diasDescanso >= 2) {
+        return false;
+    }
+    return true;
+}
+
+// Función para manejar el envío del formulario
+document.getElementById("citaForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    
+    var nombre = document.getElementById("nombre").value;
+    var especie = document.getElementById("especie").value;
+    var edad = document.getElementById("edad").value;
+    var fecha = document.getElementById("fecha").value;
+    var hora = document.getElementById("hora").value;
+    var doctor = document.getElementById("doctor").value;
+    var servicio = document.getElementById("servicio").value;
+    var problema = document.getElementById("problema").value;
+
+    // Verificar si el médico puede atender al paciente en la fecha seleccionada
+    if (!puedeAtender(doctor, fecha)) {
+        document.getElementById("mensaje").innerHTML = "Lo sentimos, el médico no puede atender más pacientes en este día o necesita descansar.";
+        return;
+    }
+
+    // Verificar si ya hay una cita programada para la hora seleccionada
+    if (citas[fecha] && citas[fecha][doctor] && citas[fecha][doctor].includes(hora)) {
+        // Si ya hay una cita programada, mostramos un mensaje de error y permitimos al usuario seleccionar otra hora
+        document.getElementById("mensaje").innerHTML = "Lo sentimos, ya hay una cita programada para la hora seleccionada. Por favor, seleccione otra hora.";
+    } else {
+        // Si no hay una cita programada, procedemos con la reserva de la cita
+        // Actualizar el contador de citas para el doctor y fecha seleccionados
+        citas[fecha][doctor] = citas[fecha][doctor] || [];
+        citas[fecha][doctor].push(hora);
+        
+        // Aquí puedes realizar otras acciones con la información del formulario, como enviarla a través de una solicitud HTTP
+        
+        document.getElementById("mensaje").innerHTML = "¡Cita reservada con éxito!";
+    }
+});
+    </script>
+</body>
+</html>
